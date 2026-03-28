@@ -5,7 +5,7 @@ from api.extract_track import router as extract_router
 from api.solve_track import router as solve_router
 
 
-app = FastAPI(title="CQ Hacks F1 Solver API")
+app = FastAPI(title="FOTOA Backend", description="Backend API for Formula One Track Optimization & Analysis", version="1.0")
 
 app.add_middleware(
 	CORSMiddleware,

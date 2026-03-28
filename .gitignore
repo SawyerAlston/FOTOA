@@ -1,0 +1,6 @@
+/cqvenv
+node_modules
+__pycache__
+*.pyc
+.fastf1_cache
+.track_points_cache

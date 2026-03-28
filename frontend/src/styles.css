@@ -406,6 +406,28 @@ button.wide-button {
   position: relative;
 }
 
+.canvas-stage {
+  position: relative;
+}
+
+.canvas-save-button {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 6;
+  padding: 7px 11px;
+  font-size: 0.82rem;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.92);
+  color: #e2e8f0;
+}
+
+.canvas-save-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 .track-canvas {
   width: 100%;
   max-width: 100%;

@@ -1010,20 +1010,49 @@ const TrackEditorCanvas = ({
     setHoverTelemetry(null);
   };
 
+  const onSaveCanvas = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) {
+      return;
+    }
+
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const filename = `fotoa-track-${timestamp}.png`;
+    const dataUrl = canvas.toDataURL('image/png');
+
+    const link = document.createElement('a');
+    link.href = dataUrl;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
   return (
     <div className="canvas-wrapper">
-      <canvas
-        ref={canvasRef}
-        className={`track-canvas ${mode === 'drag' ? 'drag-mode' : 'draw-mode'} ${
-          mode === 'drag' && isHoveringDraggablePoint ? 'drag-hover' : ''
-        } ${mode === 'drag' && dragIndex >= 0 ? 'drag-active' : ''}`}
-        width={width}
-        height={height}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={stopInteraction}
-        onPointerLeave={stopInteraction}
-      />
+      <div className="canvas-stage">
+        <button
+          type="button"
+          className="canvas-save-button"
+          onClick={onSaveCanvas}
+          disabled={!hasTrack}
+          title={hasTrack ? 'Save canvas as PNG' : 'Draw or load a track first'}
+        >
+          Save
+        </button>
+        <canvas
+          ref={canvasRef}
+          className={`track-canvas ${mode === 'drag' ? 'drag-mode' : 'draw-mode'} ${
+            mode === 'drag' && isHoveringDraggablePoint ? 'drag-hover' : ''
+          } ${mode === 'drag' && dragIndex >= 0 ? 'drag-active' : ''}`}
+          width={width}
+          height={height}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={stopInteraction}
+          onPointerLeave={stopInteraction}
+        />
+      </div>
       <div className="canvas-hint">
         {mode === 'drag'
           ? 'Hover near the track to see tug cursor, then drag to reshape.'

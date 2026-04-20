@@ -2,7 +2,7 @@
   <img src="frontend/src/assets/FOTOALOGO.png" alt="Placeholder" width="300"/>
 </p> 
 
-> **Formula One Track Optimization & Analysis**
+> **Formula One Track Optimization & Analysis** [DEVPOST LINK](https://devpost.com/software/folo?)
 
 FOTOA is an interactive F1 lap-time simulator. You can draw a custom circuit or select a real F1 track from FastF1 telemetry, then compute a theoretical minimum lap time with segment-level telemetry data, actionable insights, and heatmap overlays.
 
